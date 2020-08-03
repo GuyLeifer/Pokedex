@@ -44,10 +44,57 @@ const searchPokemon = async (pokemonId = 3) => {
     pokeDiv.appendChild(ul);
       for (let i = 0; i < types.length; i++) {
           let li = document.createElement("li");
-          li.textContent = [i+1] + ". " + types[i];
+          li.setAttribute("id", "pok");
+          li.textContent = types[i];
           ul.appendChild(li);
       }
   } 
 
+  document.addEventListener("click", (e) => {
+    console.log(e.target.id);
+    if (e.target.id === "pok") {
+      searchInput.value = "";
+      let divRemove = document.getElementById("brothersList");
+      if (divRemove !== null) divRemove.remove();
+      let parent = e.target.parentElement
+      console.log(e.target.innerText)
+      openList(e.target.innerText, parent)
+  }
+  if (e.target.id === "brotherName") {
+    searchPokemon(e.target.innerText);
+}
+  })
 
+  const openList = async (pokemonName, node) => {
+    console.log(pokemonName);
+      await axios
+      .get(`http://pokeapi.co/api/v2/type/${pokemonName}`)
+      .then(response => {
+        console.log(response) 
+        showBrothers(response.data, node)
+      })
+      .catch(error => {
+        console.log(error.message);
+        document.getElementById("error").innerHTML = "<p>Type not found</p>"
+        setTimeout(() => {
+          document.getElementById("error").innerHTML = '';
+      }, 3000);
+      });
+  }
+    
+
+
+const showBrothers = (data, node) => {
+  console.log(data.pokemon)
+  let brothersRapper = document.createElement("div");
+  brothersRapper.classList.add("brothersRapper");
+  node.appendChild(brothersRapper);
+  let names = data.pokemon;
+  let pokNames = "";
+  names.forEach(i => {
+    console.log(i)
+    pokNames += `<a id="brotherName" href="#">${i.pokemon.name}  </a>`
+  });
+  brothersRapper.innerHTML = `<div id="brothersList">Pokemon Brothers: ${pokNames}</div> `
+};
 
