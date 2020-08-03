@@ -4,6 +4,14 @@ const pokeDiv = document.getElementById("pokeDiv");
 
 searchButton.addEventListener("click", () => searchPokemon(searchInput.value));
 
+//Gives the option to add task by enter
+searchInput.addEventListener("keyup", (e) => {
+  if (e.keyCode === 13) {
+    myPokemonId = searchInput.value;
+    searchPokemon(myPokemonId);
+  }
+});
+
 const searchPokemon = async (pokemonId = 3) => {
   try {
   const { data } = await axios.get(`http://pokeapi.co/api/v2/pokemon/${pokemonId}`);
