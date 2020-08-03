@@ -1,3 +1,28 @@
+html {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    border: 1px solid black;
+    width: 50%;
+    text-align: center;
+    margin: auto;
+}
+body {
+
+}
 h1 {
     color: rgb(1, 1, 63);
+    /* background-image: url("https://vignette.wikia.nocookie.net/pokemon-fano/images/6/6f/Poke_Ball.png/revision/latest?cb=20140520015336");
+    background-repeat: no-repeat;
+    background-size: cover;
+    */
+}
+#img {
+    text-decoration: underline;
+}
+#pokeDiv {
+    margin-top: 20px;
+    padding: 15px;
+}
+
+ul {
+    list-style-type: none; 
 }
