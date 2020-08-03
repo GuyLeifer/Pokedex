@@ -5,6 +5,7 @@ const pokeDiv = document.getElementById("pokeDiv");
 searchButton.addEventListener("click", () => searchPokemon(searchInput.value));
 
 const searchPokemon = async (pokemonId = 3) => {
+  try {
   const { data } = await axios.get(`http://pokeapi.co/api/v2/pokemon/${pokemonId}`);
   console.log(data)
   let name = data.name;
@@ -13,6 +14,11 @@ const searchPokemon = async (pokemonId = 3) => {
   let picture = data.sprites.front_default;
   let backPicture = data.sprites.back_default;
   makeDiv(name, height, weight, picture, backPicture);
+  }
+  catch (err) {
+      pokeDiv.innerHTML = 
+      `<div style="color:red">${err}</div>`
+  }
 };
 
 
