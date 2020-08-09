@@ -17,8 +17,8 @@ header {
     margin-bottom: 20px;
 }
 #pokeball {
-    height: 50%;
-    width: 50%;
+    height: 10%;
+    width: 10%;
 }
 #img {
     text-decoration: underline;
@@ -32,4 +32,10 @@ a {
 }
 .brothersRapper {
     margin-top: 20px;
+}
+a {
+    border: 1px solid black;
+}
+ul {
+    text-decoration: underline;
 }

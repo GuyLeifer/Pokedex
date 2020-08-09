@@ -20,11 +20,9 @@ const searchPokemon = async (pokemonId = 3) => {
   let weight = data.weight;
   let picture = data.sprites.front_default;
   let backPicture = data.sprites.back_default;
-  console.log(data.types);
   let types = [];
   for (let i = 0; i<data.types.length; i++) {
   types.push(data.types[i].type.name);
-  console.log(types);
   }
   makeDiv(name, height, weight, picture, backPicture, types);
   }
@@ -59,13 +57,11 @@ const searchPokemon = async (pokemonId = 3) => {
   } 
 
   document.addEventListener("click", (e) => {
-    console.log(e.target.id);
     if (e.target.id === "pok") {
       searchInput.value = "";
       let divRemove = document.getElementById("brothersList");
       if (divRemove !== null) divRemove.remove();
       let parent = e.target.parentElement
-      console.log(e.target.innerText)
       openList(e.target.innerText, parent)
   }
   if (e.target.id === "brotherName") {
@@ -74,11 +70,9 @@ const searchPokemon = async (pokemonId = 3) => {
   })
 
   const openList = async (pokemonName, node) => {
-    console.log(pokemonName);
       await axios
       .get(`http://pokeapi.co/api/v2/type/${pokemonName}`)
       .then(response => {
-        console.log(response) 
         showBrothers(response.data, node)
       })
       .catch(error => {
@@ -93,14 +87,12 @@ const searchPokemon = async (pokemonId = 3) => {
 
 
 const showBrothers = (data, node) => {
-  console.log(data.pokemon)
   let brothersRapper = document.createElement("div");
   brothersRapper.classList.add("brothersRapper");
   node.appendChild(brothersRapper);
   let names = data.pokemon;
   let pokNames = "";
   names.forEach(i => {
-    console.log(i)
     pokNames += `<a id="brotherName" href="#">${i.pokemon.name}  </a>`
   });
   brothersRapper.innerHTML = `<div id="brothersList">Pokemon Brothers: ${pokNames}</div> `
