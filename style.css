@@ -1,0 +1,41 @@
+html {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    border: 1px solid black;
+    width: 50%;
+    text-align: center;
+    margin: auto;
+    min-width: 200px;
+}
+body {
+
+}
+h1 {
+    color: rgb(1, 1, 63);
+    text-decoration: underline;
+}
+header {
+    margin-bottom: 20px;
+}
+#pokeball {
+    height: 10%;
+    width: 10%;
+}
+#img {
+    text-decoration: underline;
+}
+#pokeDiv {
+    margin-top: 20px;
+    padding: 15px;
+}
+a {
+    display: block;
+}
+.brothersRapper {
+    margin-top: 20px;
+}
+a {
+    border: 1px solid black;
+}
+ul {
+    text-decoration: underline;
+}
